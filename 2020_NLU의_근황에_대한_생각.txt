@@ -1,0 +1,65 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "2020 NLU의 근황에 대한 생각.ipynb",
+      "provenance": [],
+      "private_outputs": true,
+      "collapsed_sections": [],
+      "authorship_tag": "ABX9TyN3PhhCgUW0LIS4+psu327Z",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/moey920/NLP/blob/master/2020_NLU%EC%9D%98_%EA%B7%BC%ED%99%A9%EC%97%90_%EB%8C%80%ED%95%9C_%EC%83%9D%EA%B0%81.txt\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "aK7nO1aOGFSm",
+        "colab_type": "text"
+      },
+      "source": [
+        "(https://www.kakaobrain.com/blog/118)\n",
+        "\n",
+        "# 인간의 말을 이해하는지 검증해야 하는 단계에 온 NLU\n",
+        "\n",
+        "- 2020년 2월에 작성된 카카오 브레인 팀의 포스팅을 보고 여러 생각이 들었습니다.\n",
+        "현재 구글 비전 OCR로 영수증을 100% 정확하게 텍스트로 변환할 수 없기에 영수증용 맞춤법 번역기를 만들고 있습니다.(2020-05 / 캐시카우 현장실습)\n",
+        "벌써 NLP task를 시작한지 3달이 되어갑니다. 그 동안 머신러닝이 아닌 단어사전 등을 제작하여 hunspell 등의 여러 방법도 사용해봤고, 그나마 가장 자신있는 분야인 머신러닝으로 해결할 수 밖에 없겠다 싶어서 여러 repo를 참고하여 seq2seq, attention, transformer, bert 등을 시도해보았습니다.(트랜스포머와 bert는 아직 분류기 문제를 번역기로 바꾸는 과정에서의 오류를 해결중입니다.) \n",
+        "\n",
+        "- BERT의 경우 성능이 정말 좋다는 글을 수없이 봤고, 리소스가 부족해서 훈련이 불가능할지언정 모델이 부족해서 task를 완수하지 못 할 거라는 생각은 해보지 못했습니다. 하지만 위의 포스트를 보니 BERT가 실제로 퍼포먼스가 뛰어나고 SuperGLUE에서도 높은 벤치마크를 달성했지만, NLU 자체가 해결하지 못한 문제들이 존재한다는 사실을 알게 되었습니다. 주어와 목적어가 바뀌더라도 문장의 결합에 따라 오답을 참으로 인식하기도 하고, \"과제를 푼 게 아니다, 벤치마크를 달성한 것이다\" 라는 말과 같이 현재 가장 신뢰받는 지표는 SOTA를 달성했더라도, 현실의 자연어를 '이해'하고 있느냐는 차원이 다른 문제인 것 같습니다.\n",
+        "\n",
+        "- 그래서 2020년에는 BERT/RoBERTa/ALBERT/T5 등의 훌륭한 모델이 많지만, BERT가 연속되거나 여러 마스크가 있을 경우 한 마스크가 다른 마스크의 예측에 영향을 주지 못하는 단점과 NSP를 이용하는 단점이 있고, 이를 보완하여 RoBERTa/ALBERT/T5가 탄생하였듯이 서로의 단점을 보완하고 장점을 극대화하는 모델들이 탄생할 것이고, 이러한 과정 속에서 정말, 진짜로 인간의 말을 이해할 수 있는 모델도 탄생할 것입니다. 벌써 2020년의 반이 지나간 6월이지만 제가 취직을 준비하고, 나중에 다시 NLP task를 찾아볼 땐 벌써 그런 단계에 들어서 있을 것이라 예상합니다.\n",
+        "\n",
+        "- 그래서 저는 NLP, 특히 NLU를 연구하는 직업을 가지고 싶습니다. 대학원에 가서 머신러닝을 더 깊게 공부하고 이해하고 싶고, 이를 현실세계의 task에 접목시켜 누구도 생각해보지 못한 새로운 가치를 창출하는 사람이 되고 싶습니다. 또한 어릴 때부터 누구나 생각하듯 외국인과 자연스럽게 자국어만 이용해도 서로에게 아무런 딜레이 없이 외국어가 이해되는 시스템도 개발하고 싶고, 우리 집 강아지를 보며 항상 무슨 생각을 할까 궁금했는데 비단 인간의 언어뿐만이 아니라, 동물의 울음소리도 데이터화시키고, 초음파나 페로몬도 데이터화 시켜 인간이 세상 모든 것을 이해할 수 있는(기계를 통해) 세상을 만들고 싶습니다. 장담하는데, 내가 말한 이 일들이 터무니 없어 보일지라도 2040년 안에는 자연스러운 일상이 되어 있을 것입니다. 저는 27살의 나이로 이제서야 졸업을 한학기 앞두고 있어 너무 늦었다는 생각에 조급해했지만, 지금 대학원이나 직장에 가서 이 일을 시작해도, 기술 발전의 최전선에서 출발할 준비를 하고 있다는 사실이 매우 설레입니다. 부디 내 꿈을 포기하지 않고 열정을 불태울 기회가 오길 간절히 기도합니다."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "2GOCXDQhGIoq",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        ""
+      ],
+      "execution_count": 0,
+      "outputs": []
+    }
+  ]
+}
